@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+	<!-- paddings  -->
+   	<dimen name="list_item_padding_top">10dip</dimen>    
+    <dimen name="list_item_padding_right">3dip</dimen>    
+    <dimen name="list_item_padding_bottom">10dip</dimen>    
+    <dimen name="list_item_padding_left">3dip</dimen>  
+    
+    <dimen name="expandable_list_item_height">75dip</dimen>
+    <dimen name="expandable_list_item_padding_right">50dip</dimen>
+    
+    <dimen name="version_padding">0dip</dimen>
+    
+    <dimen name="about_text_padding">5dip</dimen>
+    
+    
+     <!-- text sizes -->
+    <dimen name="poets_list_text_size">18sp</dimen>
+    <dimen name="books_list_text_size">18sp</dimen>
+    <dimen name="parts_list_text_size">13sp</dimen>
+    <dimen name="poems_list_text_size">10sp</dimen>
+    
+    <!-- about trxt size -->
+    <dimen name="about_text_size">13sp</dimen>
+    
+    <!--  -->
+         
+</resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Qibla Compass</string>
+	<string name="qibla">Qibla Compass</string>	
+	<string name="settings_label">Settings</string>
+	<string name="settings_shortcut">s</string>
+	<string name="gps_status">GPS</string>
+	<string name="gps_status_summary">Use GPS to identify the location
+	</string>
+	<string name="network_status">Network</string>
+	<string name="network_status_summary">Use wireless network to identify the location</string>
+	<string name="settings_title">Application Settings</string>
+	<string name="gps_prompt">GPS</string>
+	<string name="gps_summary">Use GPS to identify the location</string>
+	<string name="state_location_title">Set the location manually</string>
+	<string name="state_location_summary">Set your location to states of Iran(Adding Battery Performance)</string>
+	<string name="gps_pref_key">GPS_LOCATION_PREF</string>
+	<string name="state_location_pref_key">state_LOCATION_PREF</string>
+	<string name="preference_title">Qibla Compass Preferences</string>
+	<string name="about_menu_title">About</string>
+	<string name="about_text">\nجهت قبله برای اقامه نماز مسلمانان امری حیاتی است. با برنامهٔ <font fgcolor="#ffffffff"><b>قبله‌نما</b></font> می‌توانید جهت قبله را در محلی که در آن قرار دارید بدست آورید.\n\n
+
+تمامی حقوق مادی  و معنوی این برنامه متعلق به شرکت <font fgcolor="#ffffffff"><b>همراه همزبان ایرانیان</b></font> است. مبنای محاسبه جهت قبله بر اساس زاویه بین محل دستگاه و محل قبله است.\n\n
+
+برای آشنایی بیشتر با <font fgcolor="#ffffffff"><b>فارسی‌تل</b></font> به <font fgcolor="#ff749c00"><a href="http://farsitel.com/fa/" fgcolor="749C00FF">http://farsitel.com/</a></font>‎ سر بزنید.\n\n
+</string>
+	<string name="help_menu_title">Help</string>
+	<string name="prefs_menu_title">Preferences</string>
+	<string name="release_date">۱۵ آبان ۱۳۸۹\n</string>
+	<string name="version">Version 0.9</string>
+	<string name="about_title_text">About Qibla Compass Application</string>
+	<string name="current_location_not_set">Device location is not recognized yet.</string>
+	<string name="current_location"><b>Your location:</b></string>
+	<string name="latitude_north">N</string>
+<string name="latitude_south">S</string>
+<string name="longitude_east">E</string>
+<string name="longitude_west">W</string>
+<string name="and"><b>and</b></string>
+</resources>

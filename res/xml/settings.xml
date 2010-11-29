@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory />
+  <CheckBoxPreference
+    android:key="@string/gps_pref_key"
+    android:title="@string/gps_prompt"
+    android:summary="@string/gps_summary"
+    android:defaultValue="false"
+  />
+ <ListPreference
+ android:key="@string/state_location_pref_key"
+ android:title="@string/state_location_title"
+ android:summary="@string/state_location_summary"
+ android:entries="@array/state_names"
+ android:entryValues="@array/state_keys"
+ android:dialogTitle="@string/state_location_title"
+ android:defaultValue="12"
+/>
+ 
+</PreferenceScreen>
