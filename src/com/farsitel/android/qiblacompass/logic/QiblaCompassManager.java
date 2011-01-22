@@ -1,64 +1,72 @@
 package com.farsitel.android.qiblacompass.logic;
 
-import java.util.Calendar;
+/*
+ * This class is responsible for gathering information about north and qibla angles and deliver it to QiblaActivity.
+ * Note that this class is not responsible for any synchronization of animation because of deadlock issues.
+ * 
+ * Written by: Majid Kalkatehchi
+ * Email: majid@farsitel.com
+ */
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
 
-import android.hardware.Camera.PreviewCallback;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
 import com.farsitel.android.qiblacompass.activities.QiblaActivity;
-import com.farsitel.android.qiblacompass.data.AthanTime;
 import com.farsitel.android.qiblacompass.util.ConcurrencyUtil;
-import com.farsitel.android.qiblacompass.util.ConstantUtil;
+import com.farsitel.android.qiblacompass.util.ConstantUtilInterface;
 
 public class QiblaCompassManager implements SensorEventListener,
-        LocationListener {
-    public static final int MESSAGE_ON_DEVICE_HEAD_DIRECTION = 2;
-    public static final int MESSAGE_ON_QIBLA_DIRECTION = 3;
-    public static final String MESSAGE_NORTH_DIRECTION_ANGEL_KEY = "northDirection";
-    public static final String MESSAGE_DEVICE_LOCATION_KEY = "deviceLocation";
+        LocationListener, ConstantUtilInterface {
+
     private double qiblaNewAngle;
     private double northNewAngle;
     private boolean isNorthChanged = false;
     private boolean isQiblaChanged = false;
     private double lastQiblaAngle = 0;
     private double lastNorthAngle = 0;
-    private QiblaActivity qiblaActivity;
+    private final QiblaActivity qiblaActivity;
+
+    // These variables are used to recognize north direction. please refer to
+    // android Sensor documentation
+    private final float[] mGData = new float[3];
+    private final float[] mMData = new float[3];
+    private final float[] mR = new float[16];
+    private final float[] mI = new float[16];
+    private final float[] mOrientation = new float[3];
+    private int mCount;
+    // End
+
+    // This variable is used for performance issues.
+    private Double previousNorth = null;
 
     public QiblaCompassManager(QiblaActivity qiblaActivity) {
         this.qiblaActivity = qiblaActivity;
     }
 
-    // public static final String providerString = LocationManager.GPS_PROVIDER;
-
-    private Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message message) {
-            Log.w(ConstantUtil.NAMAZ_QIBLA_LOG_TAG,
-                    "New message recieved message:" + message.what);
+            Log.d(NAMAZ_QIBLA_LOG_TAG, "New message recieved message:"
+                    + message.what);
             int what = message.what;
             switch (what) {
             case MESSAGE_ON_DEVICE_HEAD_DIRECTION:
-                ConcurrencyUtil.directionChangedLock.writeLock().lock();
+                // ConcurrencyUtil.directionChangedLock.writeLock().lock();
                 try {
                     Double deviceDirection = (Double) message.getData().get(
                             MESSAGE_NORTH_DIRECTION_ANGEL_KEY);
-                    Log.w(ConstantUtil.NAMAZ_QIBLA_LOG_TAG,
+                    Log.w(NAMAZ_QIBLA_LOG_TAG,
                             "new Device direction to write with lock:"
                                     + deviceDirection);
                     changeNorthDirection(deviceDirection.doubleValue());
@@ -67,7 +75,7 @@ public class QiblaCompassManager implements SensorEventListener,
                     qiblaActivity.signalForAngleChange();
 
                 } finally {
-                    ConcurrencyUtil.directionChangedLock.writeLock().unlock();
+                    // ConcurrencyUtil.directionChangedLock.writeLock().unlock();
                 }
 
                 break;
@@ -82,7 +90,7 @@ public class QiblaCompassManager implements SensorEventListener,
 
                 break;
             default:
-                Log.i(ConstantUtil.NAMAZ_QIBLA_LOG_TAG,
+                Log.d(NAMAZ_QIBLA_LOG_TAG,
                         "Unhandled Message for QiblaCompassManager message.what="
                                 + what);
             }
@@ -93,8 +101,8 @@ public class QiblaCompassManager implements SensorEventListener,
         double returnValue = value;
         ConcurrencyUtil.directionChangedLock.writeLock().lock();
         try {
-            Log.i(ConstantUtil.NAMAZ_QIBLA_LOG_TAG,
-                    "changing qibla Delta degree  value: " + value);
+            Log.d(NAMAZ_QIBLA_LOG_TAG, "changing qibla Delta degree  value: "
+                    + value);
             qiblaNewAngle = value;
 
             // if(toZero) qiblaNewAngle=0;
@@ -108,8 +116,8 @@ public class QiblaCompassManager implements SensorEventListener,
         double returnValue = northNewAngle;
         ConcurrencyUtil.directionChangedLock.writeLock().lock();
         try {
-            Log.i(ConstantUtil.NAMAZ_QIBLA_LOG_TAG,
-                    "changing north Delta degree value: " + value);
+            Log.d(NAMAZ_QIBLA_LOG_TAG, "changing north Delta degree value: "
+                    + value);
             northNewAngle = value;
             // if(toZero) northNewAngle=0;
         } finally {
@@ -117,9 +125,6 @@ public class QiblaCompassManager implements SensorEventListener,
         }
         return returnValue;
     }
-
-    public static final String QIBLA_CHANGED_MAP_KEY = "qibla";
-    public static final String NORTH_CHANGED_MAP_KEY = "north";
 
     public Map<String, Double> fetchDeltaAngles() {
         Map<String, Double> returnValue = new HashMap<String, Double>();
@@ -129,8 +134,7 @@ public class QiblaCompassManager implements SensorEventListener,
                 returnValue.put(NORTH_CHANGED_MAP_KEY, northNewAngle);
             if (isQiblaChanged)
                 returnValue.put(QIBLA_CHANGED_MAP_KEY, qiblaNewAngle);
-            Log.i(ConstantUtil.NAMAZ_QIBLA_LOG_TAG,
-                    "SomeOne is fetching delta angles ");
+            Log.d(NAMAZ_QIBLA_LOG_TAG, "SomeOne is fetching delta angles ");
             isNorthChanged = false;
             isQiblaChanged = false;
         } finally {
@@ -139,49 +143,17 @@ public class QiblaCompassManager implements SensorEventListener,
         return returnValue;
     }
 
-    // provider for location changing
-
-    // public void onSensorChanged(int sensor, float[] values) {
-    // Log.i(ConstantUtil.NAMAZ_QIBLA_LOG_TAG, "sensor is changed  "
-    // + values[0] + " " + values[1]);
-    // if (sensor == SensorManager.SENSOR_ORIENTATION) {
-    // // setNorthDirectionFromDeviceHead(values[0]);
-    // Message message = mHandler.obtainMessage();
-    // message.what = MESSAGE_ON_DEVICE_HEAD_DIRECTION;
-    // Bundle bundle = new Bundle();
-    // bundle.putDouble(MESSAGE_NORTH_DIRECTION_ANGEL_KEY, -values[0]);
-    // message.setData(bundle);
-    // mHandler.sendMessage(message);
-    // }
-    // }
-
     public void onAccuracyChanged(int sensor, int accuracy) {
-        // TODO Auto-generated method stub
-
     }
 
-    private Location previousLocation = null;
-
     public void onLocationChanged(Location location) {
-        Log.i(ConstantUtil.NAMAZ_QIBLA_LOG_TAG, "Location changed ");
-        // //
-        // c.setTimeZone(TimeZone.getDefault());
-        // int year = c.get(Calendar.YEAR);
-        // int month = c.get(Calendar.MONTH);
-        // int day = c.get(Calendar.DAY_OF_MONTH);
-        // AthanTime athanTime = athanTimeCalculator.getDatePrayerTimes(year,
-        // month, day, location.getLatitude(), location.getLongitude(),
-        // TimeZone.getDefault());
-        // qiblaActivity.onPrayerTimeChangeListener(athanTime);
+        Log.d(NAMAZ_QIBLA_LOG_TAG, "Location changed ");
         if (previousLocation == null || isFarEnough(location, previousLocation)) {
-            qiblaActivity.currentLocation = location;
-            qiblaActivity.setLocationText();
+            qiblaActivity.onNewLocationFromGPS(location);
             new LocationChangedAsyncTask(mHandler).execute(location);
         }
 
     }
-
-    private static double MIN_DISTANCE_BETWEEN_LOCATIONS = 10000;
 
     private boolean isFarEnough(Location newLocation, Location prevLocation) {
         double newLatitude = newLocation.getLatitude();
@@ -206,32 +178,16 @@ public class QiblaCompassManager implements SensorEventListener,
     }
 
     public void onProviderDisabled(String provider) {
-        // TODO Auto-generated method stub
-
     }
 
     public void onProviderEnabled(String provider) {
-        // TODO Auto-generated method stub
-
     }
 
     public void onStatusChanged(String provider, int status, Bundle extras) {
-        // TODO Auto-generated method stub
-
     }
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // TODO Auto-generated method stub
-
     }
-
-    private float[] mGData = new float[3];
-    private float[] mMData = new float[3];
-    private float[] mR = new float[16];
-    private float[] mI = new float[16];
-    private float[] mOrientation = new float[3];
-    private int mCount;
-    private Double previousNorth = null;
 
     public void onSensorChanged(SensorEvent event) {
         int type = event.sensor.getType();
@@ -259,11 +215,23 @@ public class QiblaCompassManager implements SensorEventListener,
         if (mCount++ > 50) {
             final float rad2deg = (float) (180.0f / Math.PI);
             mCount = 0;
-            Log.d("Compass", "yaw: " + (int) (mOrientation[0] * rad2deg)
-                    + "  pitch: " + (int) (mOrientation[1] * rad2deg)
-                    + "  roll: " + (int) (mOrientation[2] * rad2deg)
-                    + "  incl: " + (int) (incl * rad2deg));
-            double newDegree = mOrientation[0] * rad2deg -90d ;
+            double yaw = mOrientation[0] * rad2deg * 1d;
+            double pitch = mOrientation[1] * rad2deg * 1d;
+            double roll = mOrientation[2] * rad2deg * 1d;
+            double incl2 = incl * rad2deg * 1d;
+
+            // double pitch = mOrientation[1] * rad2deg;
+            // if (pitch > 75) { // downside
+            // qiblaActivity.onScreenDown();
+            // } else if (pitch < 30) { // upside
+            // qiblaActivity.onScreenUp();
+            // }
+            if ((pitch < -45 || pitch > 45) || (roll > -45 || roll < -135)) {
+                qiblaActivity.onScreenDown();
+            } else {
+                qiblaActivity.onScreenUp();
+            }
+            double newDegree = yaw - 90d;
             if (previousNorth == null
                     || isDeltaDegreeEnough(new Double(newDegree), previousNorth)) {
                 Message message = mHandler.obtainMessage();
@@ -282,10 +250,10 @@ public class QiblaCompassManager implements SensorEventListener,
 
     }
 
-    private final double MIN_DEGREE_FROM_NORTH = 3;
-
     private boolean isDeltaDegreeEnough(Double newDegree, Double previousDegree) {
-        if (Math.abs(newDegree - previousDegree) > MIN_DEGREE_FROM_NORTH) {
+        double delta = (Math.abs(newDegree - previousDegree) % 360);
+        if (delta > MIN_DEGREE_FROM_NORTH
+                && delta < (360 - MIN_DEGREE_FROM_NORTH)) {
             return true;
         } else {
             return false;
@@ -296,7 +264,7 @@ public class QiblaCompassManager implements SensorEventListener,
 }
 
 class LocationChangedAsyncTask extends AsyncTask<Location, Void, Double> {
-    private Handler mHandler;
+    private final Handler mHandler;
 
     public LocationChangedAsyncTask(Handler handler) {
         super();
@@ -320,8 +288,6 @@ class LocationChangedAsyncTask extends AsyncTask<Location, Void, Double> {
         Bundle bundle = new Bundle();
         bundle.putDouble(QiblaCompassManager.MESSAGE_DEVICE_LOCATION_KEY,
                 result.doubleValue());
-        // bundle.putDouble(QiblaCompassManager.MESSAGE_DEVICE_LOCATION_KEY,
-        // 83d);
         message.setData(bundle);
         this.mHandler.sendMessage(message);
     }

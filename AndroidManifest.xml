@@ -11,21 +11,21 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name=".activities.UserPreferenceActivity"
-          android:label="@string/preference_title">
+		<activity android:name=".activities.UserPreferenceActivity">
 		</activity>
-		<activity android:name=".activities.HelpActivity"
+		<!-- <activity android:name=".activities.HelpActivity"
           android:label="@string/help_menu_title">
-		</activity>
-		<activity android:name=".activities.AboutActivity"
-          android:label="@string/about_menu_title">
+		</activity> -->
+		<activity android:name=".activities.AboutActivity">
 		</activity>
 
 	</application>
 	<uses-sdk android:minSdkVersion="7" />
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 
+
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
 </manifest>

@@ -1,39 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Qibla Compass</string>
-	<string name="qibla">Qibla Compass</string>	
+	
 	<string name="settings_label">Settings</string>
-	<string name="settings_shortcut">s</string>
-	<string name="gps_status">GPS</string>
-	<string name="gps_status_summary">Use GPS to identify the location
-	</string>
-	<string name="network_status">Network</string>
-	<string name="network_status_summary">Use wireless network to identify the location</string>
-	<string name="settings_title">Application Settings</string>
-	<string name="gps_prompt">GPS</string>
-	<string name="gps_summary">Use GPS to identify the location</string>
-	<string name="state_location_title">Set the location manually</string>
-	<string name="state_location_summary">Set your location to states of Iran(Adding Battery Performance)</string>
+	<string name="prefs_menu_title">Settings</string>
+	<string name="about_menu_title">About</string>
+
+	<string name="screen_down_text">Please hold your phone horizontally and toward upside so that it\'s compass could work. Can\'t determine the direction of the north accurately now.</string>
+
+	<string name="no_location_yet">Please wait. Detecting your location...\nOr you can select your city in the Settings.</string>
+	<string name="default_location_text">Direction of Qibla in %s</string>
+	<string name="geo_location_info">Your current geographic location is %Ld° %Ld´ %s, %Ld° %Ld´ %s.</string>
+	<string name="latitude_north">N</string>
+	<string name="latitude_south">S</string>
+	<string name="longitude_east">E</string>
+	<string name="longitude_west">W</string>
+
+	<string name="gps_status">Use GPS</string>
+	<string name="gps_status_summary">Enables using GPS for getting your location.</string>
+
+	<string name="gps_prompt">Use GPS</string>
+	<string name="gps_summary">Enables using GPS for getting your location.</string>
+
+	<string name="state_location_title">Set your location manually</string>
+	<string name="state_location_summary">Select one of province capitals of Iran if you are near them.</string>
+
+	<string name="about_title_text">\nAbout Qibla Compass</string>
+
+	<string name="about_text"><br/>
+	If you don\'t know the direction of Qibla in your current location, just use this application.
+	<br/><br/>
+    All rights reserved by <font fgcolor="#ffffffff"><b>Iranian Congenial Mobile Co.</b></font>. The direction of the Qibla is computed using GPS and the direction of the north reported by the compass.
+   <br/><br/>
+    Visit <font fgcolor="#ff749c00"><a href="http://farsitel.com/fa/" fgcolor="749C00FF">http://farsitel.com/</a></font> to learn more about 
+   <font fgcolor="#ffffffff"><b>FarsiTel</b></font>.
+   <br/><br/>
+   </string>
+
+	<!-- Do not translate next two tag, it's used by program for other reasons -->
 	<string name="gps_pref_key">GPS_LOCATION_PREF</string>
 	<string name="state_location_pref_key">state_LOCATION_PREF</string>
-	<string name="preference_title">Qibla Compass Preferences</string>
-	<string name="about_menu_title">About</string>
-	<string name="about_text">\nجهت قبله برای اقامه نماز مسلمانان امری حیاتی است. با برنامهٔ <font fgcolor="#ffffffff"><b>قبله‌نما</b></font> می‌توانید جهت قبله را در محلی که در آن قرار دارید بدست آورید.\n\n
 
-تمامی حقوق مادی  و معنوی این برنامه متعلق به شرکت <font fgcolor="#ffffffff"><b>همراه همزبان ایرانیان</b></font> است. مبنای محاسبه جهت قبله بر اساس زاویه بین محل دستگاه و محل قبله است.\n\n
-
-برای آشنایی بیشتر با <font fgcolor="#ffffffff"><b>فارسی‌تل</b></font> به <font fgcolor="#ff749c00"><a href="http://farsitel.com/fa/" fgcolor="749C00FF">http://farsitel.com/</a></font>‎ سر بزنید.\n\n
-</string>
-	<string name="help_menu_title">Help</string>
-	<string name="prefs_menu_title">Preferences</string>
-	<string name="release_date">۱۵ آبان ۱۳۸۹\n</string>
-	<string name="version">Version 0.9</string>
-	<string name="about_title_text">About Qibla Compass Application</string>
-	<string name="current_location_not_set">Device location is not recognized yet.</string>
-	<string name="current_location"><b>Your location:</b></string>
-	<string name="latitude_north">N</string>
-<string name="latitude_south">S</string>
-<string name="longitude_east">E</string>
-<string name="longitude_west">W</string>
-<string name="and"><b>and</b></string>
+	<string name="release_date">December 27, 2010\n</string>
+	<string name="version">Version 1.0</string>
 </resources>

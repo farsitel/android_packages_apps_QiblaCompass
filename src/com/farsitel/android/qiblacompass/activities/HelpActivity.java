@@ -1,7 +1,13 @@
 package com.farsitel.android.qiblacompass.activities;
 
-
-
+/*
+ * This activity is responsible to show help screen to user.
+ *  Written by Majid Kalkatechi 
+ *  Email: majid@farsitel.com
+ * 
+ * Required files:
+ * res/layout/help.xml
+ */
 import android.app.Activity;
 import android.os.Bundle;
 

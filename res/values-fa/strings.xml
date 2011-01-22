@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">قبله‌نما</string>
+
+	<string name="settings_label">تنظیمات</string>
+	<string name="prefs_menu_title">تنظیمات</string>
+	<string name="about_menu_title">درباره</string>
+
+	<string name="screen_down_text">گوشی را افقی و رو به بالا بگیرید تا قطب‌نمای آن به خوبی کار کند. در این حالت نمی‌توان جهت شمال را به درستی تشخیص داد.</string>
+
+	<string name="no_location_yet">کمی صبر کنید تا موقعیت جغرافیایی شما مشخص\nشود، یا در تنظیمات، نام شهر خود را انتخاب کنید.</string>
+	<string name="default_location_text"> جهت  قبله \n  در  %s</string>
+	<string name="geo_location_info">طول و عرض جغرافیایی موقعیت شما ‎%Ld° %Ld´‎ %s و ‎%Ld° %Ld´‎ %s است.</string>
+	<string name="latitude_north">شمالی</string>
+	<string name="latitude_south">جنوبی</string>
+	<string name="longitude_east">شرقی</string>
+	<string name="longitude_west">غربی</string>
+
+	<string name="gps_status">استفاده از جی‌پی‌اس</string>
+	<string name="gps_status_summary">مشخص کردن موقعیت جغرافیایی با استفاده از ماهواره‌های جی‌پی‌اس</string>
+
+	<string name="gps_prompt">استفاده از جی‌پی‌اس</string>
+	<string name="gps_summary">مشخص کردن موقعیت جغرافیایی با استفاده از ماهواره‌های جی‌پی‌اس</string>
+
+	<string name="state_location_title">تنظیم دستی موقعیت جغرافیایی</string>
+	<string name="state_location_summary">اگر در یکی از مراکز استان‌ها هستید شهر خود را انتخاب کنید.</string>
+
+	<string name="about_title_text">\nدربارهٔ قبله‌نما</string>
+
+	<string name="about_text">\n
+	اگر در سفرید یا مهمان جایی هستید و نمی‌دانید جهت قبله کدام است، با این برنامه می‌توانید جهت قبله را به دست آورید.
+	\n\n
+	تمامی حقوق مادی و معنوی این برنامه متعلق به شرکت
+		<font fgcolor="#ffffffff">
+			<b>همراه همزبان ایرانیان</b>
+		</font>
+		است.
+جهت قبله با استفاده از موقعیت جغرافیایی شما و محاسبهٔ اختلاف زاویهٔ قبله با جهت شمال به دست می‌آید.
+    \n\n
+
+		برای آشنایی بیشتر با
+		<font fgcolor="#ffffffff">
+			<b>فارسی‌تل</b>
+		</font>
+		به
+		<font fgcolor="#ff749c00">
+			<a href="http://farsitel.com/fa/" fgcolor="749C00FF">http://farsitel.com/</a>
+		</font>
+		‎ سر بزنید.\n\n
+	</string>
+
+	<!-- Do not translate next two tag, it's used by program for other reasons -->
+	<string name="gps_pref_key">GPS_LOCATION_PREF</string>
+	<string name="state_location_pref_key">state_LOCATION_PREF</string>
+
+	<string name="release_date">۶ دی ۱۳۸۹\n</string>
+	<string name="version">نسخهٔ ۱٫۰</string>
+</resources>
