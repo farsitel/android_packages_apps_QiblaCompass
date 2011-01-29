@@ -9,8 +9,8 @@
 	<string name="screen_down_text">گوشی را افقی و رو به بالا بگیرید تا قطب‌نمای آن به خوبی کار کند. در این حالت نمی‌توان جهت شمال را به درستی تشخیص داد.</string>
 
 	<string name="no_location_yet">کمی صبر کنید تا موقعیت جغرافیایی شما مشخص\nشود، یا در تنظیمات، نام شهر خود را انتخاب کنید.</string>
-	<string name="default_location_text"> جهت  قبله \n  در  %s</string>
-	<string name="geo_location_info">طول و عرض جغرافیایی موقعیت شما ‎%Ld° %Ld´‎ %s و ‎%Ld° %Ld´‎ %s است.</string>
+	<string name="default_location_text">جهت قبله\nدر %s</string>
+	<string name="geo_location_info">موقعیت شما به دست آمد.</string>
 	<string name="latitude_north">شمالی</string>
 	<string name="latitude_south">جنوبی</string>
 	<string name="longitude_east">شرقی</string>

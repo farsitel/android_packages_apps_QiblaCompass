@@ -9,8 +9,8 @@
 	<string name="screen_down_text">Please hold your phone horizontally and toward upside so that it\'s compass could work. Can\'t determine the direction of the north accurately now.</string>
 
 	<string name="no_location_yet">Please wait. Detecting your location...\nOr you can select your city in the Settings.</string>
-	<string name="default_location_text">Direction of Qibla in %s</string>
-	<string name="geo_location_info">Your current geographic location is %Ld° %Ld´ %s, %Ld° %Ld´ %s.</string>
+	<string name="default_location_text">Direction of Qibla \nin %s</string>
+	<string name="geo_location_info">Location Data Acquired.</string>
 	<string name="latitude_north">N</string>
 	<string name="latitude_south">S</string>
 	<string name="longitude_east">E</string>

@@ -14,8 +14,9 @@
     
     <dimen name="about_text_padding">5dip</dimen>
     
-    <dimen name="notification_text_size">40sp</dimen>
-    <dimen name="notification_medium_text_size">17sp</dimen>
+    <dimen name="notification_text_size">20sp</dimen>
+    <dimen name="notification_medium_text_size">11sp</dimen>
+    <dimen name="location">5dip</dimen>
     
     <!-- about trxt size -->
     <dimen name="about_text_size">13sp</dimen>
