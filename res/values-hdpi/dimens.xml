@@ -14,13 +14,15 @@
     
     <dimen name="about_text_padding">5dip</dimen>
     
-    <dimen name="notification_text_size">40sp</dimen>
-    <dimen name="notification_medium_text_size">17sp</dimen>
-    <dimen name="location">5dip</dimen>
+    <dimen name="notification_text_size">20sp</dimen>
+    <dimen name="notification_medium_text_size">11sp</dimen>
+    <dimen name="location">30dip</dimen>
+    <dimen name="orientation">17dip</dimen>
     
-    <!-- about trxt size -->
-    <dimen name="about_text_size">13sp</dimen>
-    <dimen name="small_text_size">9sp</dimen>
+    
+    <!-- about text size -->
+    <dimen name="about_text_size">12sp</dimen>
+    <dimen name="small_text_size">8sp</dimen>
     
     <!--  -->
          

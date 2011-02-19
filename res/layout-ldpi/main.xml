@@ -5,7 +5,7 @@
 	android:layout_height="fill_parent" android:id="@+id/mainLayout"
 	android:background="@drawable/background">
 	<RelativeLayout
-		xmlns:android="http://schemas.android.com/apk/res/android" android:layout_marginTop="10px"
+		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="vertical" android:layout_width="fill_parent"
 		android:layout_height="fill_parent">
 		<LinearLayout
@@ -17,7 +17,7 @@
 			<TextView
 				android:textSize="@dimen/location" android:id="@+id/location_text_line2"
 				android:textColor="@color/gray" android:layout_width="fill_parent" android:layout_height="fill_parent"
-				android:gravity="center_horizontal" android:paddingTop="100px"
+				android:gravity="center_horizontal" android:paddingTop="45px"
 				android:lines="2"/>
 		</LinearLayout>
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,8 +26,8 @@
 			android:background="@drawable/leather">
 			<TextView
 				android:textSize="@dimen/orientation" android:textColor="@color/gray"
-				android:gravity="center" android:id="@+id/noLocationText" android:paddingTop="60px"
-				android:paddingLeft="40px" android:paddingRight="40px"
+				android:gravity="center" android:id="@+id/noLocationText" android:paddingTop="30px"
+				android:paddingLeft="25px" android:paddingRight="25px"
 				android:layout_height="fill_parent" android:layout_width="fill_parent" 
 				android:lines="5" />
 		</LinearLayout>

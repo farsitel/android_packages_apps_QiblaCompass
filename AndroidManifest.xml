@@ -3,7 +3,6 @@
     package="com.farsitel.qiblacompass"
     android:versionCode="2"
     android:versionName="1.1">
-
     <application android:icon="@drawable/icon"
         android:theme="@android:style/Theme.NoTitleBar"
         android:debuggable="true"
@@ -16,9 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.UserPreferenceActivity">
+        <activity android:name=".activities.UserPreferenceActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.AboutActivity">
+        <activity android:name=".activities.AboutActivity" android:screenOrientation="portrait">
         </activity>
     </application>
 

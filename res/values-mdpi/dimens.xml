@@ -14,13 +14,14 @@
     
     <dimen name="about_text_padding">5dip</dimen>
     
-    <dimen name="notification_text_size">20sp</dimen>
+    <dimen name="notification_text_size">25sp</dimen>
     <dimen name="notification_medium_text_size">11sp</dimen>
-    <dimen name="location">5dip</dimen>
+    <dimen name="location">25dip</dimen>
+    <dimen name="orientation">18dip</dimen>
     
     <!-- about text size -->
-    <dimen name="about_text_size">12sp</dimen>
-    <dimen name="small_text_size">8sp</dimen>
+    <dimen name="about_text_size">16sp</dimen>
+    <dimen name="small_text_size">14sp</dimen>
     
     <!--  -->
          

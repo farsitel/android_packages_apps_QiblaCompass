@@ -380,10 +380,7 @@ public class QiblaActivity extends Activity implements AnimationListener,
             text1.setTypeface(Typeface.SERIF);
             text2.setTypeface(Typeface.SERIF);
         }
-        text1.setTextSize(getResources().getDimension(
-                R.dimen.notification_text_size));
-        text2.setTextSize(getResources().getDimension(
-                R.dimen.notification_medium_text_size));
+
         boolean isGPS = false;
         try {
             isGPS = Boolean.parseBoolean(perfs.getString(gpsPerfKey, "false"));
@@ -436,8 +433,10 @@ public class QiblaActivity extends Activity implements AnimationListener,
         LocationManager locationManager = ((LocationManager) getSystemService(Context.LOCATION_SERVICE));
         String provider = locationManager.getBestProvider(criteria, true);
 
-        locationManager.requestLocationUpdates(provider, MIN_LOCATION_TIME,
-                MIN_LOCATION_DISTANCE, qiblaManager);
+        if (provider != null) {
+	        locationManager.requestLocationUpdates(provider, MIN_LOCATION_TIME,
+	                MIN_LOCATION_DISTANCE, qiblaManager);
+        }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                 MIN_LOCATION_TIME, MIN_LOCATION_DISTANCE, qiblaManager);
         locationManager.requestLocationUpdates(
