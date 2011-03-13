@@ -4,6 +4,10 @@
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:id="@+id/mainLayout"
 	android:background="@drawable/background">
+	<ImageView
+	android:layout_width="320dp" android:layout_height="48dp"
+	android:layout_gravity="bottom"
+	android:src="@color/red" />
 	<RelativeLayout
 		xmlns:android="http://schemas.android.com/apk/res/android" android:layout_marginTop="10px"
 		android:orientation="vertical" android:layout_width="fill_parent"
@@ -17,7 +21,7 @@
 			<TextView
 				android:textSize="@dimen/location" android:id="@+id/location_text_line2"
 				android:textColor="@color/gray" android:layout_width="fill_parent" android:layout_height="fill_parent"
-				android:gravity="center_horizontal" android:paddingTop="70px"
+				android:gravity="center_horizontal" android:paddingTop="30px"
 				android:lines="2"/>
 		</LinearLayout>
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,7 +30,7 @@
 			android:background="@drawable/leather">
 			<TextView
 				android:textSize="@dimen/orientation" android:textColor="@color/gray"
-				android:gravity="center" android:id="@+id/noLocationText" android:paddingTop="40px"
+				android:gravity="center" android:id="@+id/noLocationText" android:paddingTop="30px"
 				android:paddingLeft="30px" android:paddingRight="30px"
 				android:layout_height="fill_parent" android:layout_width="fill_parent" 
 				android:lines="5" />
@@ -34,6 +38,7 @@
 		<FrameLayout
 			android:orientation="vertical" android:id="@+id/qiblaFrameLayout"
 			android:layout_below="@id/textLayout" android:layout_width="wrap_content"
+			android:layout_marginBottom="20px"
 			android:layout_height="wrap_content" android:layout_centerInParent="true">
 			<FrameLayout
 				android:layout_gravity="center"

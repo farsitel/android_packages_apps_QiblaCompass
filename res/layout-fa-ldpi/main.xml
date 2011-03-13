@@ -4,6 +4,10 @@
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:id="@+id/mainLayout"
 	android:background="@drawable/background">
+	<ImageView
+	android:layout_width="320dp" android:layout_height="48dp"
+	android:layout_gravity="top"
+	android:src="@color/red" />
 	<RelativeLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="vertical" android:layout_width="fill_parent"
