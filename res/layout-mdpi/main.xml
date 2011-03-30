@@ -21,7 +21,7 @@
 			<TextView
 				android:textSize="@dimen/location" android:id="@+id/location_text_line2"
 				android:textColor="@color/gray" android:layout_width="fill_parent" android:layout_height="fill_parent"
-				android:gravity="center_horizontal" android:paddingTop="30px"
+				android:gravity="center_horizontal" android:paddingTop="50px"
 				android:lines="2"/>
 		</LinearLayout>
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
