@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 Iranian Supreme Council of ICT, The FarsiTel Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASICS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.farsitel.qiblacompass"
-    android:versionCode="3"
-    android:versionName="1.2">
+    android:versionCode="5"
+    android:versionName="1.22">
     <application android:icon="@drawable/icon"
         android:theme="@android:style/Theme.NoTitleBar"
         android:debuggable="true"
@@ -19,6 +33,7 @@
         </activity>
         <activity android:name=".activities.AboutActivity" android:screenOrientation="portrait">
         </activity>
+        <meta-data android:name="ADAD_TOKEN" android:value="12972772449b09b01091034edae061f71d1f17cb7c77761dc1c7d499a7c416d6" />
     </application>
 
     <uses-sdk android:minSdkVersion="4" />
@@ -26,4 +41,5 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"   />
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
